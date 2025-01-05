@@ -1,16 +1,41 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <div class="quiz-container" id="quiz">
+    <h2 id="question">Question will appear here</h2>
+    <ul>
+      <li>
+        <input type="radio" id="a" name="answer" />
+        <label for="a" id="a_text">Option A</label>
+      </li>
+      <li>
+        <input type="radio" id="b" name="answer" />
+        <label for="b" id="b_text">Option B</label>
+      </li>
+      <li>
+        <input type="radio" id="c" name="answer" />
+        <label for="c" id="c_text">Option C</label>
+      </li>
+      <li>
+        <input type="radio" id="d" name="answer" />
+        <label for="d" id="d_text">Option D</label>
+      </li>
+    </ul>
+    <button id="submit">Submit</button>
+  </div>
 
+  <div class="result-container" id="result" style="display: none;">
+    <h2>Your Score: <span id="score"></span>/4</h2>
+    <button onclick="location.reload()">Reload Quiz</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
+
