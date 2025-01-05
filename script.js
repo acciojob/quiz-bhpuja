@@ -1,4 +1,5 @@
 //your JS code here. If required.
+// Quiz Data
 const quizData = [
   {
     question: "Which language runs in a web browser?",
@@ -34,6 +35,7 @@ const quizData = [
   },
 ];
 
+// Select Elements
 const quiz = document.getElementById("quiz");
 const questionEl = document.getElementById("question");
 const a_text = document.getElementById("a_text");
@@ -44,15 +46,15 @@ const submitBtn = document.getElementById("submit");
 const resultContainer = document.getElementById("result");
 const scoreEl = document.getElementById("score");
 
+// Variables
 let currentQuiz = 0;
 let score = 0;
 
-loadQuiz();
-
+// Load Quiz
 function loadQuiz() {
   deselectAnswers();
-  const currentQuizData = quizData[currentQuiz];
 
+  const currentQuizData = quizData[currentQuiz];
   questionEl.innerText = currentQuizData.question;
   a_text.innerText = currentQuizData.a;
   b_text.innerText = currentQuizData.b;
@@ -60,12 +62,14 @@ function loadQuiz() {
   d_text.innerText = currentQuizData.d;
 }
 
+// Deselect Answers
 function deselectAnswers() {
   document.querySelectorAll("input[name='answer']").forEach((input) => {
     input.checked = false;
   });
 }
 
+// Get Selected Answer
 function getSelected() {
   let answer;
   document.querySelectorAll("input[name='answer']").forEach((input) => {
@@ -76,23 +80,31 @@ function getSelected() {
   return answer;
 }
 
+// Submit Button Event Listener
 submitBtn.addEventListener("click", () => {
   const answer = getSelected();
 
   if (answer) {
+    // Check if the answer is correct
     if (answer === quizData[currentQuiz].correct) {
       score++;
     }
+
     currentQuiz++;
 
     if (currentQuiz < quizData.length) {
+      // Load next question
       loadQuiz();
     } else {
+      // Show result
       quiz.style.display = "none";
       resultContainer.style.display = "block";
       scoreEl.innerText = score;
     }
   } else {
-    alert("Please select an option!");
+    alert("Please select an option before submitting!");
   }
 });
+
+// Initial Load
+loadQuiz();
